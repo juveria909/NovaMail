@@ -1,0 +1,41 @@
+# AI Email Campaign Automation Agent — Python Dependencies
+# ==========================================================
+#
+# Install everything with:
+#   pip install -r requirements.txt
+#
+# Or with uv (faster):
+#   uv pip install -r requirements.txt
+#
+# ---- WEB FRAMEWORK ----
+fastapi==0.115.5          # The web server framework
+uvicorn[standard]==0.32.1 # ASGI server that runs FastAPI (with websocket support)
+
+# ---- HTTP CLIENT (for fetching live data from RandomUser.me) ----
+aiohttp==3.11.10          # Async HTTP — doesn't block while waiting for API response
+httpx<0.28.0              # HTTP client (required by groq and other libraries, pinned to avoid proxies crash)
+
+# ---- AI PROVIDERS ----
+google-generativeai==0.8.3  # Gemini API SDK (primary AI provider)
+groq==0.12.0                # Groq API SDK (fallback AI provider)
+
+# ---- JSON PARSING ----
+json5==0.9.28             # More permissive JSON parser (Layer 3 fallback extraction)
+
+# ---- DATA VALIDATION ----
+pydantic==2.10.3          # Request/response model validation (built into FastAPI)
+
+# ---- EMAIL SENDING ----
+sendgrid==6.11.0          # SendGrid SDK for sending emails
+
+# ---- ENVIRONMENT VARIABLES ----
+python-dotenv==1.0.1      # Loads .env file into os.environ at startup
+
+# ---- UTILITIES ----
+python-dateutil==2.9.0    # Better date parsing than Python's built-in datetime
+streamlit==1.40.1          # Streamlit for premium dashboard frontend
+
+# ---- ML INTELLIGENCE LAYER ----
+xgboost>=3.3.0            # XGBoost churn risk prediction model
+scikit-learn>=1.9.0       # Collaborative Filtering (TruncatedSVD) for product recommendations
+scipy>=1.18.0             # Required by both xgboost and scikit-learn
